@@ -1,0 +1,9 @@
+A2: One read() call per byte makes about 52,428,800 Java calls for 50 MiB plus EOF. OS calls are not necessarily equal due to caches/buffering.
+
+ALGORITHM COUNT_LINES(path, B)
+    count <- 0
+    OPEN FileInputStream; WRAP BufferedInputStream(B)
+    REPEAT read byte; if EOF EXIT; if byte is LF increment count
+    CLOSE; RETURN count
+END
+Time O(file size), working space O(B). Files.readAllLines uses O(file size) memory; suitable for small data needing all lines. Buffering helps little for tiny one-pass files or already chunked input. Define final unterminated-line behavior.

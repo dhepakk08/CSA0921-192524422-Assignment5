@@ -1,0 +1,1 @@
+Add genuine output screenshots, raw timing samples, environment details, source revision and interpretation here. Templates are blank and are not completed evidence. Include Java/OS/hardware/database/driver versions. Do not commit credentials or real personal data. A ZIP cannot demonstrate progressive commits; maintain the required GitHub repository separately.

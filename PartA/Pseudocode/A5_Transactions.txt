@@ -1,0 +1,10 @@
+A5 TRANSFER
+ALGORITHM TRANSFER(source,destination,amount)
+    REQUIRE amount > 0; save autoCommit; set autoCommit FALSE
+    TRY debit source and require one row changed; credit destination and require one row changed; COMMIT
+    CATCH failure: ROLLBACK; rethrow
+    FINALLY restore old autoCommit
+END
+Two auto-commit updates can leave money debited without credit. Use constraints and consistent lock order.
+LOGIN: prepare SELECT user_id FROM users WHERE id=? AND password_value=?; bind values; execute.
+A crafted value such as x' OR '1'='1' -- can alter unsafe SQL syntax (dialect-specific); PreparedStatement binds it as data. Validation is not a substitute for binding.

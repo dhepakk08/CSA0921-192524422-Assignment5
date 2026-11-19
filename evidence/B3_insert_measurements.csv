@@ -1,0 +1,13 @@
+rows,method,trial,elapsed_ns,verified_count,database_version,driver_version,notes
+10,Statement,1,,,,,
+10,PreparedStatement,1,,,,,
+10,Batch,1,,,,,
+1000,Statement,1,,,,,
+1000,PreparedStatement,1,,,,,
+1000,Batch,1,,,,,
+10000,Statement,1,,,,,
+10000,PreparedStatement,1,,,,,
+10000,Batch,1,,,,,
+100000,Statement,1,,,,,
+100000,PreparedStatement,1,,,,,
+100000,Batch,1,,,,,

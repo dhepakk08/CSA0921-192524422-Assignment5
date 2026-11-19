@@ -1,0 +1,7 @@
+size_bytes,method,trial,elapsed_ns,lines,java_version,notes
+1048576,unbuffered,1,,,,
+1048576,buffered,1,,,,
+10485760,unbuffered,1,,,,
+10485760,buffered,1,,,,
+52428800,unbuffered,1,,,,
+52428800,buffered,1,,,,

@@ -1,0 +1,5 @@
+A4 OBJECT GRAPH
+Hostel -> rooms -> residents; every reachable non-transient object must be Serializable or writing fails.
+Resident name/register number persist. Password and live Connection are transient; never persist plaintext credentials; recreate runtime connection after load.
+Use explicit serialVersionUID. With compatible UID, newly added phoneNumber is default null in old streams; initialize/migrate it. UID mismatch may throw InvalidClassException.
+CSV/JSON use O(n) time and O(n) snapshot space, are more portable, but require versioning and validation. Never deserialize untrusted input.

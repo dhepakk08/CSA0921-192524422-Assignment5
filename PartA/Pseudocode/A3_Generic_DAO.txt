@@ -1,0 +1,5 @@
+A3 GENERIC DATA ACCESS
+INTERFACE Dao<T,K>: insert(T), findById(K)->Optional<T>, findAll()->List<T>, update(T), delete(K).
+StudentDao implements Dao<Student,String>, receives DataSource, prepares parameterized SQL, maps ResultSet, closes resources with try-with-resources.
+Mapping: Student.regNo -> student.reg_no (primary key); name -> name; courseCode -> course_code; year -> year.
+DAO localizes SQL/column changes. Per-query database complexity is unchanged; DAO improves reuse/testing.

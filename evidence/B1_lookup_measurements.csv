@@ -1,0 +1,10 @@
+records,target,trial,elapsed_ns,result,notes
+1000,first,1,,,,
+1000,middle,1,,,,
+1000,last,1,,,,
+10000,first,1,,,,
+10000,middle,1,,,,
+10000,last,1,,,,
+100000,first,1,,,,
+100000,middle,1,,,,
+100000,last,1,,,,

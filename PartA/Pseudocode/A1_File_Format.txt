@@ -1,0 +1,30 @@
+TASK A1 - FILE FORMAT (SIMATS-STYLE PSEUDOCODE)
+Record Pass: passId, regNo, name, routeNo, boardingStop, validityDate, amountPaid.
+Text: UTF-8 CSV, version header; quote fields containing comma/quote/newline and double embedded quotes.
+Binary: writeInt(version); write each string as int UTF-8 byte length plus bytes; route as int; date as epoch-day long; amount in minor units as long. Bound lengths.
+
+ALGORITHM ADD_PASS(pass)
+    VALIDATE fields
+    OPEN FileOutputStream append, wrap BufferedOutputStream, UTF-8 writer and BufferedWriter
+    WRITE escaped record and newline; FLUSH; CLOSE
+END
+
+ALGORITHM FIND_PASS(passId)
+    IF file absent THEN RETURN NOT_FOUND
+    OPEN UTF-8 FileReader wrapped in BufferedReader
+    FOR EACH numbered line: parse and validate
+        IF damaged THEN log line and CONTINUE
+        IF passId matches THEN CLOSE; RETURN record
+    END FOR
+    CLOSE; RETURN NOT_FOUND
+END
+
+ALGORITHM LIST_ROUTE(routeNo)
+    OPEN BufferedReader or return empty if absent
+    FOR EACH line: parse/validate; log and skip damaged rows
+        IF route matches THEN EMIT record
+    END FOR
+    CLOSE
+END
+
+An incomplete final line is quarantined/reported. Safer replacement: write temp file, flush, atomic rename. Text find/list O(n); working memory O(record size). RandomAccessFile seek is O(1) only for known record index; ID still needs an index or O(n) scan. Fixed-width fields waste padding.
